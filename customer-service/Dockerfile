@@ -1,7 +1,19 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
 
-ARG JAR_FILE=target/*.jar
+WORKDIR /app
 
-COPY ${JAR_FILE} app.jar
+COPY pom.xml .
+
+RUN mvn dependency:go-offline -B
+
+COPY src ./src
+
+RUN mvn clean package
+
+FROM openjdk:8-jdk-alpine AS runner
+
+WORKDIR /app
+
+COPY --from=builder ./app/target/customer-service-0.0.1-SNAPSHOT.jar ./app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
