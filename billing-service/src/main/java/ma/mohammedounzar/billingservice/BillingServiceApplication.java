@@ -27,34 +27,34 @@ public class BillingServiceApplication {
         SpringApplication.run(BillingServiceApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner commandLineRunner(BillRepository billRepository,
-                                        ProductItemRepository productItemRepository,
-                                        CustomerRestClient customerRestClient,
-                                        ProductRestClient productRestClient) {
-        return args -> {
-            Collection<Customer> customers = customerRestClient.getAllCustomers().getContent();
-            Collection<Product> products = productRestClient.getAllProducts().getContent();
-
-            customers.forEach(customer -> {
-                Bill bill = new Bill();
-                bill.setBillingDate(new Date());
-                bill.setCustomerId(customer.getId());
-                bill = billRepository.save(bill);
-
-                List<ProductItem> items = new ArrayList<>();
-                for (Product product : products) {
-                    ProductItem productItem = new ProductItem();
-                    productItem.setProductId(product.getId());
-                    productItem.setBill(bill);
-                    productItem.setQuantity(1 + new Random().nextInt(10));
-                    productItem.setUnitPrice(product.getPrice());
-                    productItemRepository.save(productItem);
-                    items.add(productItem);
-                }
-                bill.setProductItems(items);
-                System.out.println(bill.getProductItems());
-            });
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(BillRepository billRepository,
+//                                        ProductItemRepository productItemRepository,
+//                                        CustomerRestClient customerRestClient,
+//                                        ProductRestClient productRestClient) {
+//        return args -> {
+//            Collection<Customer> customers = customerRestClient.getAllCustomers().getContent();
+//            Collection<Product> products = productRestClient.getAllProducts().getContent();
+//
+//            customers.forEach(customer -> {
+//                Bill bill = new Bill();
+//                bill.setBillingDate(new Date());
+//                bill.setCustomerId(customer.getId());
+//                bill = billRepository.save(bill);
+//
+//                List<ProductItem> items = new ArrayList<>();
+//                for (Product product : products) {
+//                    ProductItem productItem = new ProductItem();
+//                    productItem.setProductId(product.getId());
+//                    productItem.setBill(bill);
+//                    productItem.setQuantity(1 + new Random().nextInt(10));
+//                    productItem.setUnitPrice(product.getPrice());
+//                    productItemRepository.save(productItem);
+//                    items.add(productItem);
+//                }
+//                bill.setProductItems(items);
+//                System.out.println(bill.getProductItems());
+//            });
+//        };
+//    }
 }
