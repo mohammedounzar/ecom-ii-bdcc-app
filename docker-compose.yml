@@ -2,36 +2,36 @@ version: "3.8"
 
 services:
   discovery-service:
-    build: ./discovery-service
+    image: discovery-service-image
     ports:
       - "8761:8761"
 
-  gateway-service:
-    build: ./gateway-service
-    ports:
-      - "8888:8888"
-    depends_on:
-      - discovery-service
-
   customer-service:
-    build: ./customer-service
+    image: customer-service-image
     ports:
       - "8081:8081"
     depends_on:
       - discovery-service
 
   inventory-service:
-    build: ./inventory-service
+    image: inventory-service-image
     ports:
       - "8082:8082"
     depends_on:
       - discovery-service
 
   billing-service:
-    build: ./billing-service
+    image: billing-service-image
     ports:
       - "8083:8083"
     depends_on:
       - customer-service
+      - discovery-service
       - inventory-service
+
+  gateway-service:
+    image: gateway-service-image
+    ports:
+      - "8888:8888"
+    depends_on:
       - discovery-service
