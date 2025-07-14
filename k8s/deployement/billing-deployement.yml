@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: billing-service
-          image: your-dockerhub-username/user-service:latest
+          image: mohamedensias/billing-service:latest
           ports:
             - containerPort: 8083
