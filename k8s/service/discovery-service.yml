@@ -10,4 +10,4 @@ spec:
       port: 80
       targetPort: 8761
       nodePort: 30061  # Optional: manually set a port (range 30000–32767)
-  type: NodePort
+  type: ClusterIP
