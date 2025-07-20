@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REMOTE_HOST = "appserver@192.168.11.105"
+        REMOTE_HOST = "appserver@192.168.11.115"
         PROJECT_DIR = "/home/appuser/ecom-ii-bdcc-app"
     }
 
