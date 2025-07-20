@@ -18,7 +18,7 @@ pipeline {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${REMOTE_HOST} '
                             cd ${PROJECT_DIR} &&
-                            git pull origin main &&
+                            git pull origin master &&
                             docker compose up -d
                         '
                     """
