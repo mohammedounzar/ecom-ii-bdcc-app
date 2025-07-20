@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         REMOTE_HOST = "appserver@192.168.11.115"
-        PROJECT_DIR = "/home/appuser/ecom-ii-bdcc-app"
+        PROJECT_DIR = "/home/appserver/ecom-ii-bdcc-app"
     }
 
     stages {
