@@ -58,7 +58,7 @@ public class BillController {
             bill.setProductItems(items);
         });
 
-        return ResponseEntity.ok("Bills generated with success for all customers and products. Test");
+        return ResponseEntity.ok("Bills generated successfully for all customers and products. Test");
     }
 }
 
