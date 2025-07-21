@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('H/5 * * * *')
-    }
-
     environment {
         REMOTE_HOST = "appserver@192.168.11.115"
         PROJECT_DIR = "/home/appserver/ecom-ii-bdcc-app"
