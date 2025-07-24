@@ -5,28 +5,28 @@ scrape_configs:
   - job_name: 'gateway-service'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['192.168.1.88:8888']
+      - targets: ['gateway-service:8888']
 
   - job_name: 'discovery-service'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['192.168.1.88:8761']
+      - targets: ['127.0.0.1:8761']
 
   - job_name: 'customer-service'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['192.168.1.88:8081']
+      - targets: ['customer-service:8081']
 
   - job_name: 'inventory-service'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['192.168.1.88:8082']
+      - targets: ['inventory-service:8082']
 
   - job_name: 'billing-service'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: [ '192.168.1.88:8083' ]
+      - targets: [ 'billing-service:8083' ]
 
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['192.168.1.88:9090']
+      - targets: ['127.0.0.1:9090']
